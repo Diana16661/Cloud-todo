@@ -1,0 +1,35 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-arm64-openssl-1.1.x", "linux-arm64-openssl-1.1.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  id          Int       @id @default(autoincrement())
+  title       String    @db.VarChar(120)           // обов'язкове, 3–120 символів можна валідити у бекенді
+  description String?   @db.VarChar(500)           // опціональне
+  status      Status    @default(NEW)             // enum NEW | IN_PROGRESS | DONE
+  priority    Priority  @default(LOW)             // enum LOW | MEDIUM | HIGH
+  dueDate     DateTime?                             // опціональне
+  completed   Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// Enum для статусу
+enum Status {
+  NEW
+  IN_PROGRESS
+  DONE
+}
+
+// Enum для пріоритету
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}

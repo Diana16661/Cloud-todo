@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cloud ToDo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Cloud ToDo</h1>
+
+  <div>
+    <input id="title" placeholder="Task title" />
+    <textarea id="description" placeholder="Task description"></textarea>
+    <select id="priority">
+      <option value="LOW">LOW</option>
+      <option value="MEDIUM">MEDIUM</option>
+      <option value="HIGH">HIGH</option>
+    </select>
+    <button id="addBtn">Add Task</button>
+  </div>
+
+  <h2>Tasks</h2>
+  <div>
+    <label>Status filter:</label>
+    <select id="statusFilter">
+      <option value="">All</option>
+      <option value="NEW">NEW</option>
+      <option value="IN_PROGRESS">IN_PROGRESS</option>
+      <option value="DONE">DONE</option>
+    </select>
+  </div>
+
+  <ul id="tasks"></ul>
+
+  <script src="app.js"></script>
+</body>
+</html>
